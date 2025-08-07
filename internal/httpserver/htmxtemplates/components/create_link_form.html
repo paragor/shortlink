@@ -1,0 +1,39 @@
+{{define "component/create_link_form"}}
+    <div id="create-link-form-div" class="row m-4" hx-ext="response-targets">
+    <h3 class='col-12'> Create link: </h3>
+    <div id='error-create-link-form' class='col-12' style="background: palevioletred"></div>
+    <form id='create-link-form' 
+          class='col-12'
+          hx-post='/api/create'
+          hx-target-error="#error-create-link-form"
+    >
+        <input type="text" id="timezone" name="timezone" style="display: none" onload="">
+        <div class="form-group row mb-2">
+            <label for="target" class="col-lg-2 col-12">Target url: </label>
+            <div class="col-lg-10 col-12">
+                <input type='url' class="form-control" name='target' id='target' required>
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="max_clicks" class='col-lg-2 col-12'>Max clicks: </label>
+            <div class="col-lg-10 col-12">
+                <input type='number' class="form-control" name='max_clicks' id='max_clicks'>
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="expire_at" class='col-lg-2 col-12'>Expire at: </label>
+            <div class="col-lg-10 col-12">
+                <input type='datetime-local' class="form-control" name='expire_at' id='expire_at'>
+            </div>
+        </div>
+        <button class='btn btn-sm btn-success'>
+            Create
+        </button>
+    </form>
+        <script type="text/javascript">
+            htmx.onLoad(function () {
+                document.getElementById('timezone').value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            })
+        </script>
+    </div>
+{{end}}

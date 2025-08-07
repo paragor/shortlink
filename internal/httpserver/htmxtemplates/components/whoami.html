@@ -1,0 +1,14 @@
+{{define "component/whoami"}}
+    <div class='row'>
+        <div class="col-12">
+            Expiration: "{{ .Expiration }}"
+        </div>
+        <div class="col-12">
+            Email: "{{ .Email }}"
+        </div>
+        <div class="col-12">
+            Token:
+        </div>
+        <pre class="col-12">{{ .TokenPrettyJson }}</pre>
+    </div>
+{{end}}
